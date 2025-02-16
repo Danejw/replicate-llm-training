@@ -9,14 +9,16 @@ const LLMs = {
   flan: ['flan-t5-xl', 'eec2f71c986dfa3b7a5d842d22e1130550f015720966bec48beaae059b19ef4c']
 }
 
+// version="replicate/flan-t5-xl:eec2f71c986dfa3b7a5d842d22e1130550f015720966bec48beaae059b19ef4c",
+
 // Choose your LLM (llama, gpt, flan)
-const [llm, version] = LLMs.flan
+const [llm, version] = LLMs.flan  //LLMs.flan 
 
 // Your Replicate username/model to save the fine tuning to
-const destination = ''
+const destination = 'danejw/lyrassist'
 
 // URL to your training data
-const training_data_url = ''
+const training_data_url = 'https://drive.google.com/file/d/1IDwCLivqYjzfsI6YUdLLgQgoIqb5FO2h/view?usp=sharing'
 
 const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
@@ -29,6 +31,7 @@ async function main() {
       train_data: training_data_url
     }
   })
+
   console.log(`URL: https://replicate.com/p/${training.id}`)
 }
 
